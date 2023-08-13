@@ -72,12 +72,12 @@
     align-items: center;
     padding: 0 15px;
     background-color: #4b95e9;
+    overflow: hidden;
 }
 
 .navbar__links {
     margin-left: auto;
-    margin-right: 20px;
-    font-size: 18px;
+    font-size: 35px;
     text-decoration: none;
 }
 
