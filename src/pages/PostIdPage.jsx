@@ -21,7 +21,7 @@ const PostIdPage = () => {
     useEffect(() => {
         fetchComments();
         fetchPostById();
-    }, [fetchComments, fetchPostById]);
+    }, []);
 
     return (
         <div className="postById">
