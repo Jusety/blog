@@ -8,36 +8,46 @@ const PostIdPage = () => {
     const params = useParams();
     const [post, setPost] = useState({});
     const [comments, setComments] = useState([]);
-    const [fetchPostById, isLoading] = useFetching(async ()=>{
+    const [fetchPostById, isLoading] = useFetching(async () => {
         const response = await PostService.getPostById(params.id);
         setPost(response.data);
-    })
+    });
 
-    const [fetchComments, isComLoading] = useFetching(async()=>{
+    const [fetchComments, isComLoading] = useFetching(async () => {
         const response = await PostService.getComments(params.id);
         setComments(response.data);
-    })
+    });
 
-    useEffect(()=>{
+    useEffect(() => {
         fetchComments();
         fetchPostById();
-    }, [])
+    }, [fetchComments, fetchPostById]);
 
     return (
         <div className="postById">
             <h1>Post</h1>
-            {isLoading
-            ?<Loader/>
-            :<div className="postByIdContent">{post.id}. {post.title} <hr/>{post.body}</div>}
+            {isLoading ? (
+                <Loader />
+            ) : (
+                <div className="postByIdContent">
+                    {post.id}. {post.title} <hr />
+                    {post.body}
+                </div>
+            )}
             <h1>Comments</h1>
-            {isComLoading
-            ?<Loader/>
-            :comments.map(comment=>{
-                return <div className="postComm" key={comment.id}><h4>{comment.email}</h4> {comment.body} <hr /></div>
-            })
-            }
+            {isComLoading ? (
+                <Loader />
+            ) : (
+                comments.map((comment) => {
+                    return (
+                        <div className="postComm" key={comment.id}>
+                            <h4>{comment.email}</h4> {comment.body} <hr />
+                        </div>
+                    );
+                })
+            )}
         </div>
-    )
+    );
 };
 
 export default PostIdPage;

@@ -29,8 +29,8 @@ function Posts() {
         setTotalPages(getPageCount(totalCount, limit));
     });
 
-    useObserver(isLoading, lastElement, page<totalPages, ()=>{
-        setPage(page+1);
+    useObserver(isLoading, lastElement, page < totalPages, () => {
+        setPage(page + 1);
     });
 
     useEffect(() => {
@@ -69,7 +69,7 @@ function Posts() {
                 posts={searchedAndSortedPosts}
                 title="Post list"
             />
-            <div ref={lastElement}/>
+            <div ref={lastElement} />
             {isLoading && (
                 <div
                     style={{
@@ -80,8 +80,7 @@ function Posts() {
                 >
                     <Loader />
                 </div>
-            )  
-            }
+            )}
             {/* <Pagination
                 totalPages={totalPages}
                 page={page}
