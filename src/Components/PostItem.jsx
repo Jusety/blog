@@ -8,15 +8,24 @@ const PostItem = (props) => {
     return (
         <div className="post" style={{ borderRadius: "10px" }}>
             <div className="postContent">
-                <strong>{props.number}. {props.post.title}</strong>
+                <strong>
+                    {props.number}. {props.post.title}
+                </strong>
                 <div>{props.post.body}</div>
             </div>
             <div className="postBtn">
-                <MyButton onClick={()=>navigate(`/posts/${props.post.id}`)}>Open</MyButton>
-                <MyButton onClick={()=>props.remove(props.post)}>Delete</MyButton>
+                <MyButton
+                    id="btn"
+                    onClick={() => navigate(`/posts/${props.post.id}`)}
+                >
+                    Open
+                </MyButton>
+                <MyButton id="btn" onClick={() => props.remove(props.post)}>
+                    Delete
+                </MyButton>
             </div>
         </div>
-    )
+    );
 };
 
 export default PostItem;
